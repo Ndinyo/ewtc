@@ -76,7 +76,7 @@ class _EwtcLandingState extends State<EwtcLanding> {
                   child: DefaultTextStyle(
                     style: TextStyle(
                       fontSize: 20.0,
-                      color: Colors.red,
+                      color: Colors.deepOrangeAccent,
                       fontWeight: FontWeight.bold,
                     ),
                     child: Center(
