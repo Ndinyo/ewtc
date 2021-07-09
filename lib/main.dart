@@ -38,12 +38,10 @@ class _EwtcLandingState extends State<EwtcLanding> {
           child: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            //width: 600,
-            //height: 400,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage('assets/underconst.jpg'),
+                image: AssetImage('images/underconst.jpg'),
               ),
             ),
             child: Row(
@@ -79,6 +77,7 @@ class _EwtcLandingState extends State<EwtcLanding> {
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.red,
+                      fontWeight: FontWeight.bold,
                     ),
                     child: Center(
                       child: AnimatedTextKit(
