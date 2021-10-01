@@ -1,13 +1,16 @@
+import 'package:ewtc/pages/about.dart';
+import 'package:ewtc/pages/contact.dart';
+import 'package:ewtc/pages/main_page.dart';
+import 'package:ewtc/pages/services.dart';
 import 'package:flutter/material.dart';
-import 'package:glassmorphism/glassmorphism.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
+//import 'package:glassmorphism/glassmorphism.dart';
+//import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() {
   runApp(Ewtc());
 }
 
 class Ewtc extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,12 +19,19 @@ class Ewtc extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: EwtcLanding(),
+      //home: EwtcLanding(),
+      initialRoute: MainPage.mainPageId,
+      routes: {
+        MainPage.mainPageId: (context) => MainPage(),
+        About.aboutId: (context) => About(),
+        Services.servicesId: (context) => Services(),
+        Contact.contactId: (context) => Contact(),
+      },
     );
   }
 }
 
-class EwtcLanding extends StatefulWidget {
+/* class EwtcLanding extends StatefulWidget {
   EwtcLanding({Key? key}) : super(key: key);
 
   @override
@@ -100,3 +110,4 @@ class _EwtcLandingState extends State<EwtcLanding> {
     );
   }
 }
+ */
