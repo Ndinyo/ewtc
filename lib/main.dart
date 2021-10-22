@@ -1,6 +1,6 @@
-import 'package:ewtc/pages/about.dart';
+import 'package:ewtc/pages/about/about.dart';
 import 'package:ewtc/pages/contact.dart';
-import 'package:ewtc/pages/main_page.dart';
+import 'package:ewtc/pages/home/home.dart';
 import 'package:ewtc/pages/services.dart';
 import 'package:flutter/material.dart';
 //import 'package:glassmorphism/glassmorphism.dart';
@@ -20,12 +20,12 @@ class Ewtc extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: EwtcLanding(),
-      initialRoute: MainPage.mainPageId,
+      initialRoute: HomePage.homeId,
       routes: {
-        MainPage.mainPageId: (context) => MainPage(),
-        About.aboutId: (context) => About(),
-        Services.servicesId: (context) => Services(),
+        HomePage.homeId: (context) => HomePage(),
         Contact.contactId: (context) => Contact(),
+        Services.servicesId: (context) => Services(),
+        About.aboutId: (context) => About(),
       },
     );
   }

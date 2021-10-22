@@ -1,5 +1,5 @@
 name: ewtc
-description: ewtc web
+description: Elite Writing & Training Consultants Web App
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -30,7 +30,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   glassmorphism: ^2.0.1
   animated_text_kit: ^4.2.1
-
+  universal_html: ^2.0.8
+  scrollable_positioned_list: ^0.1.10
+  url_launcher: ^6.0.12
+  carousel_slider: ^4.0.0
+  google_fonts: ^2.1.0
+  provider: ^6.0.1
+  shared_preferences: ^2.0.8
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
