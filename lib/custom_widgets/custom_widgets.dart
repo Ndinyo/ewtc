@@ -1,11 +1,12 @@
 import 'package:ewtc/constants/constants.dart';
+import 'package:ewtc/pages/about.dart';
 import 'package:ewtc/pages/contact.dart';
 import 'package:ewtc/pages/home.dart';
+import 'package:ewtc/pages/services.dart';
 import 'package:flutter/material.dart';
 
 class TopContainer extends StatelessWidget {
   final Color? color;
-
   final double? width;
   final double? height;
   final Widget? child;
@@ -27,10 +28,6 @@ class TopContainer extends StatelessWidget {
               Colors.blueAccent.shade100,
               kBlue,
             ]),
-        /*  borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(60.0),
-            bottomLeft: Radius.circular(60.0),
-          ) */
       ),
       child: child,
       color: color,
@@ -158,7 +155,11 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   : _isHovering[1] = false;
                             });
                           },
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(context, About.aboutId);
+                            });
+                          },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -194,7 +195,11 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   : _isHovering[2] = false;
                             });
                           },
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(context, Services.servicesId);
+                            });
+                          },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -288,12 +293,25 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.4),
+          color: Colors.black.withOpacity(0.6),
         ),
         child: Padding(
           padding: EdgeInsets.all(10),
           child: ListView(
             children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30),
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                ),
+                child: Image.asset(
+                  'images/elite_transparent2.png',
+                ),
+              ),
               ListTile(
                 title: Text(
                   'Home',
@@ -310,7 +328,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ListTile(
                 title: Text('About', style: TextStyle(color: Colors.white)),
                 onTap: () {
-                  setState(() {});
+                  setState(() {
+                    Navigator.pushNamed(context, About.aboutId);
+                  });
                 },
                 trailing: Icon(Icons.arrow_right_alt),
               ),
@@ -318,7 +338,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ListTile(
                 title: Text('Services', style: TextStyle(color: Colors.white)),
                 onTap: () {
-                  setState(() {});
+                  setState(() {
+                    Navigator.pushNamed(context, Services.servicesId);
+                  });
                 },
                 trailing: Icon(Icons.arrow_right_alt),
               ),
@@ -364,7 +386,6 @@ class ContactCard extends StatelessWidget {
           bottomRight: Radius.circular(60.0),
           bottomLeft: Radius.circular(60.0),
         )),
-        //color: Colors.white,
         width: 200,
         height: 140,
         child: Padding(

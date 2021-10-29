@@ -454,7 +454,15 @@ class _ContactState extends State<Contact> {
                                       ),
                                       SizedBox(height: 10),
                                       Text(
-                                        'Get in touch, send us an email or call us!',
+                                        'Get in touch, send us ',
+                                        textAlign: TextAlign.center,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6,
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        'an email or call us!',
                                         textAlign: TextAlign.center,
                                         style: Theme.of(context)
                                             .textTheme

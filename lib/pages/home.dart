@@ -99,286 +99,243 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      height: screenSize.height,
-                      width: screenSize.width / 2,
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.4),
-                            ),
-                          ),
-                          Center(
-                            child: Column(
+                EntranceFader(
+                  offset: Offset(0, 0),
+                  delay: Duration(seconds: 1),
+                  duration: Duration(milliseconds: 800),
+                  child: Container(
+                    // image below the top bar
+                    height: screenSize.height,
+                    width: screenSize.width,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.6),
+                      image: DecorationImage(
+                        image: AssetImage('images/office-elements.jpg'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ),
+                //New Home starts here
+                Positioned(
+                  top: screenSize.height * 0.2,
+                  right: 200,
+                  left: 200,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ResponsiveHandler.isMobileScreen(context)
+                          ? Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                ResponsiveHandler.isMobileScreen(context)
-                                    ? Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'HELLO!',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.merriweather(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: kBlue,
-                                                    fontSize: 15),
-                                              ),
-                                              EntranceFader(
-                                                offset: Offset(0, 0),
-                                                delay: Duration(seconds: 2),
-                                                duration:
-                                                    Duration(milliseconds: 800),
-                                                child: Image.asset(
-                                                  'images/hi.gif',
-                                                  height:
-                                                      screenSize.height * 0.05,
-                                                ),
-                                              ),
-                                              Text(
-                                                'WELCOME TO',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.merriweather(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: kBlue,
-                                                    fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text(
-                                            'THE HELM',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.merriweather(
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                                fontSize: 25),
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            'OF WRITING',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.merriweather(
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                                fontSize: 25),
-                                          ),
-                                        ],
-                                      )
-                                    : Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'HELLO!',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.merriweather(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: kBlue,
-                                                    fontSize: 20),
-                                              ),
-                                              EntranceFader(
-                                                offset: Offset(0, 0),
-                                                delay: Duration(seconds: 2),
-                                                duration:
-                                                    Duration(milliseconds: 800),
-                                                child: Image.asset(
-                                                  'images/hi.gif',
-                                                  height:
-                                                      screenSize.height * 0.05,
-                                                ),
-                                              ),
-                                              Text(
-                                                'WELCOME TO',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.merriweather(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: kBlue,
-                                                    fontSize: 20),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text(
-                                            'THE HELM',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.merriweather(
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                                fontSize: 50),
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text(
-                                            'OF WRITING',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.merriweather(
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white,
-                                                fontSize: 50),
-                                          ),
-                                        ],
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'HELLO!',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.w600,
+                                          color: kBlue,
+                                          fontSize: 20),
+                                    ),
+                                    EntranceFader(
+                                      offset: Offset(0, 0),
+                                      delay: Duration(seconds: 2),
+                                      duration: Duration(milliseconds: 800),
+                                      child: Image.asset(
+                                        'images/hi.gif',
+                                        height: screenSize.height * 0.05,
                                       ),
-                                ResponsiveHandler.isMobileScreen(context)
-                                    ? Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(height: 10),
-                                          SizedBox(
-                                            width: 300,
-                                            child: AnimatedTextKit(
-                                              isRepeatingAnimation: true,
-                                              animatedTexts: [
-                                                ColorizeAnimatedText(
-                                                    'Professional Writing',
-                                                    textStyle:
-                                                        colorizeTextStyleM,
-                                                    colors: colorizeColors),
-                                                ColorizeAnimatedText(
-                                                    'Consultancy',
-                                                    textStyle:
-                                                        colorizeTextStyleM,
-                                                    colors: colorizeColors),
-                                                ColorizeAnimatedText(
-                                                    'Professional Training',
-                                                    textStyle:
-                                                        colorizeTextStyleM,
-                                                    colors: colorizeColors),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 10),
-                                          Container(
-                                              width: 160,
-                                              height: 20,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                topLeft: Radius.circular(100.0),
-                                                topRight:
-                                                    Radius.circular(100.0),
-                                                bottomRight:
-                                                    Radius.circular(100.0),
-                                                bottomLeft:
-                                                    Radius.circular(100.0),
-                                              )),
-                                              child: ElevatedButton(
-                                                  style: ButtonStyle(
-                                                    backgroundColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .orangeAccent),
-                                                  ),
-                                                  onPressed: () {},
-                                                  child: Text('Get Started',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headline5!
-                                                          .copyWith(
-                                                              color: Colors
-                                                                  .white))))
-                                        ],
-                                      )
-                                    : Column(
-                                        children: [
-                                          SizedBox(height: 20),
-                                          SizedBox(
-                                            width: 300,
-                                            child: AnimatedTextKit(
-                                              isRepeatingAnimation: true,
-                                              animatedTexts: [
-                                                ColorizeAnimatedText(
-                                                    'Professional Writing',
-                                                    textStyle:
-                                                        colorizeTextStyleD,
-                                                    colors: colorizeColors),
-                                                ColorizeAnimatedText(
-                                                    'Consultancy',
-                                                    textStyle:
-                                                        colorizeTextStyleD,
-                                                    colors: colorizeColors),
-                                                ColorizeAnimatedText(
-                                                    'Professional Training',
-                                                    textStyle:
-                                                        colorizeTextStyleD,
-                                                    colors: colorizeColors),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 30),
-                                          Container(
-                                              width: 160,
-                                              height: 40,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                topLeft: Radius.circular(100.0),
-                                                topRight:
-                                                    Radius.circular(100.0),
-                                                bottomRight:
-                                                    Radius.circular(100.0),
-                                                bottomLeft:
-                                                    Radius.circular(100.0),
-                                              )),
-                                              child: ElevatedButton(
-                                                  style: ButtonStyle(
-                                                    backgroundColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .orangeAccent),
-                                                  ),
-                                                  onPressed: () {},
-                                                  child: Text('Get Started',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headline5!
-                                                          .copyWith(
-                                                              color: Colors
-                                                                  .white))))
-                                        ],
+                                    ),
+                                    Text(
+                                      'WELCOME TO',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.w600,
+                                          color: kBlue,
+                                          fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'THE HELM',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      fontSize: 30),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'OF WRITING',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      fontSize: 30),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'HELLO!',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.w600,
+                                          color: kBlue,
+                                          fontSize: 30),
+                                    ),
+                                    EntranceFader(
+                                      offset: Offset(0, 0),
+                                      delay: Duration(seconds: 2),
+                                      duration: Duration(milliseconds: 800),
+                                      child: Image.asset(
+                                        'images/hi.gif',
+                                        height: screenSize.height * 0.05,
                                       ),
+                                    ),
+                                    Text(
+                                      'WELCOME TO',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.w600,
+                                          color: kBlue,
+                                          fontSize: 30),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'THE HELM',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      fontSize: 60),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'OF WRITING',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      fontSize: 60),
+                                ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    EntranceFader(
-                      offset: Offset(0, 0),
-                      delay: Duration(seconds: 1),
-                      duration: Duration(milliseconds: 800),
-                      child: Container(
-                        // image below the top bar
-                        height: screenSize.height,
-                        width: screenSize.width / 2,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.4),
-                          image: DecorationImage(
-                            image: AssetImage('images/elite_transparent2.png'),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                      ResponsiveHandler.isMobileScreen(context)
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(height: 10),
+                                SizedBox(
+                                  width: 300,
+                                  child: AnimatedTextKit(
+                                    isRepeatingAnimation: true,
+                                    animatedTexts: [
+                                      ColorizeAnimatedText(
+                                          'Professional Writing',
+                                          textStyle: colorizeTextStyleM,
+                                          colors: colorizeColors),
+                                      ColorizeAnimatedText('Consultancy',
+                                          textStyle: colorizeTextStyleM,
+                                          colors: colorizeColors),
+                                      ColorizeAnimatedText(
+                                          'Professional Training',
+                                          textStyle: colorizeTextStyleM,
+                                          colors: colorizeColors),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Container(
+                                    width: 160,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(100.0),
+                                      topRight: Radius.circular(100.0),
+                                      bottomRight: Radius.circular(100.0),
+                                      bottomLeft: Radius.circular(100.0),
+                                    )),
+                                    child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.orangeAccent),
+                                        ),
+                                        onPressed: () {},
+                                        child: Text('Get Started',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline5!
+                                                .copyWith(
+                                                    color: Colors.white))))
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                SizedBox(height: 20),
+                                SizedBox(
+                                  width: 300,
+                                  child: AnimatedTextKit(
+                                    isRepeatingAnimation: true,
+                                    animatedTexts: [
+                                      ColorizeAnimatedText(
+                                          'Professional Writing',
+                                          textStyle: colorizeTextStyleD,
+                                          colors: colorizeColors),
+                                      ColorizeAnimatedText('Consultancy',
+                                          textStyle: colorizeTextStyleD,
+                                          colors: colorizeColors),
+                                      ColorizeAnimatedText(
+                                          'Professional Training',
+                                          textStyle: colorizeTextStyleD,
+                                          colors: colorizeColors),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+                                Container(
+                                    width: 160,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(100.0),
+                                      topRight: Radius.circular(100.0),
+                                      bottomRight: Radius.circular(100.0),
+                                      bottomLeft: Radius.circular(100.0),
+                                    )),
+                                    child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.orangeAccent),
+                                        ),
+                                        onPressed: () {},
+                                        child: Text('Get Started',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline5!
+                                                .copyWith(
+                                                    color: Colors.white))))
+                              ],
+                            ),
+                    ],
+                  ),
                 ),
+                //Bottom copyright section
                 ResponsiveHandler.isMobileScreen(context)
                     ? Positioned(
                         bottom: 30,
-                        //left: 50,
-                        //right: 50,
                         child: Container(
                           width: screenSize.width,
                           child: Row(
