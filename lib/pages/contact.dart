@@ -18,8 +18,7 @@ class _ContactState extends State<Contact> {
   final message = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final double pageHeight = MediaQuery.of(context).size.height;
-    final double pageWidth = MediaQuery.of(context).size.width;
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -27,8 +26,8 @@ class _ContactState extends State<Contact> {
           child: Column(
             children: [
               TopContainer(
-                height: 800,
-                width: pageWidth,
+                height: 400,
+                width: screenSize.width,
                 child: Column(
                   children: [
                     Column(
@@ -151,7 +150,7 @@ class _ContactState extends State<Contact> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    width: 400,
+                    width: screenSize.width,
                     child: Form(
                       key: fieldsKey,
                       child: Column(
@@ -235,7 +234,7 @@ class _ContactState extends State<Contact> {
                     ),
                   ),
                   Container(
-                    width: 400,
+                    width: screenSize.width,
                     child: Column(
                       children: [
                         Text(

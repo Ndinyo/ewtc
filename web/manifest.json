@@ -1,11 +1,11 @@
 {
-    "name": "Elite Writing & Training Consultants",
-    "short_name": "EWTC",
+    "name": "Elite Writing Consultants",
+    "short_name": "Elite Writing Consultants",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Professional Writing Training & Consultancy.",
+    "description": "Professional Writing, Training & Consultancy",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,3 +1,5 @@
+import 'package:ewtc/constants/constants.dart';
+import 'package:ewtc/pages/contact.dart';
 import 'package:flutter/material.dart';
 
 class TopContainer extends StatelessWidget {
@@ -22,7 +24,7 @@ class TopContainer extends StatelessWidget {
               end: Alignment.topCenter,
               colors: [
                 Colors.blueAccent.shade100,
-                Colors.blueAccent,
+                kBlue,
               ]),
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(20.0),
@@ -31,42 +33,6 @@ class TopContainer extends StatelessWidget {
       child: child,
       color: color,
       width: width,
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //final _themeProvider = Provider.of<ThemeProvider>(context);
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Container(
-      margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 0),
-      height: height * 0.07,
-      width: width,
-      //color: _themeProvider.lightTheme ? Colors.white : Colors.grey[900],
-      child: Center(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Developed in 💙 with ",
-              /* style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w300,
-                color: _themeProvider.lightTheme ? Colors.black : Colors.white,
-              ), */
-            ),
-            InkWell(
-              //onTap: () => launchURL("https://github.com/mhmzdev/DevFolio"),
-              child: Text(
-                "Flutter",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
@@ -122,176 +88,179 @@ class _AppBarContentsState extends State<AppBarContents> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
-        color: Colors.blueGrey.shade900.withOpacity(widget.opacity!),
+        color: Colors.transparent.withOpacity(widget.opacity!),
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
             children: [
-             /*  Text(
-                'EWTC',
-                style: TextStyle(
-                  color: Colors.blueGrey.shade100,
-                  fontSize: 20,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 3,
-                ),
-              ), */
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
-                              ? _isHovering[0] = true
-                              : _isHovering[0] = false;
-                        });
-                      },
-                      onTap: () {},
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Home',
-                            style: TextStyle(
-                              color: _isHovering[0]
-                                  ? Colors.blue.shade200
-                                  : Colors.white,
-                            ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 70,
+                    //height: 70,
+                    child: Image.asset('images/elite_transparent2.png'),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[0] = true
+                                  : _isHovering[0] = false;
+                            });
+                          },
+                          onTap: () {},
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Home',
+                                style: TextStyle(
+                                  color: _isHovering[0]
+                                      ? Colors.blue.shade200
+                                      : Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[0],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[0],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
+                        ),
+                        SizedBox(width: screenSize.width / 20),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[1] = true
+                                  : _isHovering[1] = false;
+                            });
+                          },
+                          onTap: () {},
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'About',
+                                style: TextStyle(
+                                  color: _isHovering[1]
+                                      ? Colors.blue.shade200
+                                      : Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[1],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(width: screenSize.width / 20),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[2] = true
+                                  : _isHovering[2] = false;
+                            });
+                          },
+                          onTap: () {},
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Services',
+                                style: TextStyle(
+                                  color: _isHovering[2]
+                                      ? Colors.blue.shade200
+                                      : Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[2],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: screenSize.width / 20),
+                        InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[3] = true
+                                  : _isHovering[3] = false;
+                            });
+                          },
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(context, Contact.contactId);
+                            });
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Contact',
+                                style: TextStyle(
+                                  color: _isHovering[3]
+                                      ? Colors.blue.shade200
+                                      : Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[3],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: screenSize.width / 20),
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
-                              ? _isHovering[1] = true
-                              : _isHovering[1] = false;
-                        });
-                      },
-                      onTap: () {},
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'About',
-                            style: TextStyle(
-                              color: _isHovering[1]
-                                  ? Colors.blue.shade200
-                                  : Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[1],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: screenSize.width / 20),
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
-                              ? _isHovering[2] = true
-                              : _isHovering[2] = false;
-                        });
-                      },
-                      onTap: () {},
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Contact',
-                            style: TextStyle(
-                              color: _isHovering[2]
-                                  ? Colors.blue.shade200
-                                  : Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[2],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: screenSize.width / 20),
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
-                              ? _isHovering[3] = true
-                              : _isHovering[3] = false;
-                        });
-                      },
-                      onTap: () {},
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Services',
-                            style: TextStyle(
-                              color: _isHovering[3]
-                                  ? Colors.blue.shade200
-                                  : Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[3],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+              Divider(),
             ],
           ),
         ),
@@ -312,12 +281,18 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.4),
+        ),
         child: Padding(
           padding: EdgeInsets.all(10),
           child: ListView(
             children: [
               ListTile(
-                title: Text('Home'),
+                title: Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () {
                   setState(() {});
                 },
@@ -325,7 +300,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title: Text('About'),
+                title: Text('About', style: TextStyle(color: Colors.white)),
                 onTap: () {
                   setState(() {});
                 },
@@ -333,7 +308,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title: Text('Services'),
+                title: Text('Services', style: TextStyle(color: Colors.white)),
                 onTap: () {
                   setState(() {});
                 },
@@ -341,7 +316,8 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title: Text('Contact Us'),
+                title:
+                    Text('Contact Us', style: TextStyle(color: Colors.white)),
                 onTap: () {
                   setState(() {});
                 },
