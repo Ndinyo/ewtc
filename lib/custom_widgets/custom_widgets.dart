@@ -1,5 +1,6 @@
 import 'package:ewtc/constants/constants.dart';
 import 'package:ewtc/pages/contact.dart';
+import 'package:ewtc/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class TopContainer extends StatelessWidget {
@@ -19,17 +20,18 @@ class TopContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [
-                Colors.blueAccent.shade100,
-                kBlue,
-              ]),
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(20.0),
-            bottomLeft: Radius.circular(20.0),
-          )),
+        gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Colors.blueAccent.shade100,
+              kBlue,
+            ]),
+        /*  borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(60.0),
+            bottomLeft: Radius.circular(60.0),
+          ) */
+      ),
       child: child,
       color: color,
       width: width,
@@ -116,7 +118,11 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   : _isHovering[0] = false;
                             });
                           },
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(context, HomePage.homeId);
+                            });
+                          },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -294,7 +300,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  setState(() {});
+                  setState(() {
+                    Navigator.pushNamed(context, HomePage.homeId);
+                  });
                 },
                 trailing: Icon(Icons.arrow_right_alt),
               ),
@@ -319,11 +327,67 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                 title:
                     Text('Contact Us', style: TextStyle(color: Colors.white)),
                 onTap: () {
-                  setState(() {});
+                  setState(() {
+                    Navigator.pushNamed(context, Contact.contactId);
+                  });
                 },
                 trailing: Icon(Icons.arrow_right_alt),
               ),
               Divider(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ContactCard extends StatelessWidget {
+  final String? value1, value2;
+  final Icon? icon;
+  const ContactCard({
+    Key? key,
+    this.icon,
+    this.value1,
+    this.value2,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(60.0),
+          topRight: Radius.circular(60.0),
+          bottomRight: Radius.circular(60.0),
+          bottomLeft: Radius.circular(60.0),
+        )),
+        //color: Colors.white,
+        width: 200,
+        height: 140,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircleAvatar(
+                child: icon,
+              ),
+              SizedBox(height: 5),
+              Text(value1!,
+                  textAlign: TextAlign.center,
+                  style: (Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: kOrange))),
+              SizedBox(height: 5),
+              Divider(),
+              SizedBox(height: 5),
+              Text(value2!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black)),
             ],
           ),
         ),

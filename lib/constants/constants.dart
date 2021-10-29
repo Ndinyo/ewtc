@@ -20,14 +20,14 @@ const kTextFieldDecoration = InputDecoration(
   ),
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(
-        //color: kOrange3, /* width: 1.0 */
-        ),
+      color: kOrange, /* width: 1.0 */
+    ),
     borderRadius: BorderRadius.all(Radius.circular(20.0)),
   ),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(
-        //color: kOrange3, /* width: 2.0 */
-        ),
+      color: kOrange, /* width: 2.0 */
+    ),
     borderRadius: BorderRadius.all(Radius.circular(20.0)),
   ),
 );

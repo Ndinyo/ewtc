@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           SizedBox(height: 10),
                                           Container(
-                                              width: 120,
+                                              width: 160,
                                               height: 20,
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -285,7 +285,7 @@ class _HomePageState extends State<HomePage> {
                                                   child: Text('Get Started',
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .bodyText1!
+                                                          .headline5!
                                                           .copyWith(
                                                               color: Colors
                                                                   .white))))
@@ -319,7 +319,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           SizedBox(height: 30),
                                           Container(
-                                              width: 150,
+                                              width: 160,
                                               height: 40,
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -343,7 +343,7 @@ class _HomePageState extends State<HomePage> {
                                                   child: Text('Get Started',
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .headline6!
+                                                          .headline5!
                                                           .copyWith(
                                                               color: Colors
                                                                   .white))))
