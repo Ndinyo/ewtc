@@ -1,8 +1,8 @@
 import 'package:ewtc/constants/constants.dart';
-import 'package:ewtc/pages/about.dart';
-import 'package:ewtc/pages/contact.dart';
-import 'package:ewtc/pages/home.dart';
-import 'package:ewtc/pages/services.dart';
+//import 'package:ewtc/pages/about/about.dart';
+import 'package:ewtc/pages/contact/contact.dart';
+import 'package:ewtc/pages/home/home.dart';
+import 'package:ewtc/pages/services/services.dart';
 import 'package:flutter/material.dart';
 
 class TopContainer extends StatelessWidget {
@@ -99,7 +99,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: 70,
+                    width: 100,
                     //height: 70,
                     child: Image.asset('images/elite_transparent2.png'),
                   ),
@@ -157,7 +157,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                           },
                           onTap: () {
                             setState(() {
-                              Navigator.pushNamed(context, About.aboutId);
+                              //Navigator.pushNamed(context, About.aboutId);
                             });
                           },
                           child: Column(
@@ -293,7 +293,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.6),
+          color: Colors.grey.withOpacity(0.6),
         ),
         child: Padding(
           padding: EdgeInsets.all(10),
@@ -322,17 +322,17 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                     Navigator.pushNamed(context, HomePage.homeId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt),
+                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
               ),
               Divider(),
               ListTile(
                 title: Text('About', style: TextStyle(color: Colors.white)),
                 onTap: () {
                   setState(() {
-                    Navigator.pushNamed(context, About.aboutId);
+                    //Navigator.pushNamed(context, About.aboutId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt),
+                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
               ),
               Divider(),
               ListTile(
@@ -342,7 +342,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                     Navigator.pushNamed(context, Services.servicesId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt),
+                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
               ),
               Divider(),
               ListTile(
@@ -353,7 +353,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                     Navigator.pushNamed(context, Contact.contactId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt),
+                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
               ),
               Divider(),
             ],

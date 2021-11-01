@@ -1,9 +1,8 @@
-import 'package:ewtc/pages/about.dart';
-import 'package:ewtc/pages/contact.dart';
-import 'package:ewtc/pages/home.dart';
-import 'package:ewtc/pages/services.dart';
+import 'package:ewtc/pages/about/about.dart';
+import 'package:ewtc/pages/contact/contact.dart';
+import 'package:ewtc/pages/home/home.dart';
+import 'package:ewtc/pages/services/services.dart';
 import 'package:flutter/material.dart';
-//import 'package:glassmorphism/glassmorphism.dart';
 
 void main() {
   runApp(Ewtc());
