@@ -4,6 +4,7 @@ import 'package:ewtc/pages/contact/contact.dart';
 import 'package:ewtc/pages/home/home.dart';
 import 'package:ewtc/pages/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TopContainer extends StatelessWidget {
   final Color? color;
@@ -410,6 +411,57 @@ class ContactCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.black)),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ServicesCard extends StatelessWidget {
+  final String? heading;
+  final String? body;
+  final FaIcon? faIcon;
+  const ServicesCard({Key? key, this.body, this.faIcon, this.heading})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(60.0),
+          topRight: Radius.circular(60.0),
+          bottomRight: Radius.circular(60.0),
+          bottomLeft: Radius.circular(60.0),
+        )),
+        width: 300,
+        height: 350,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                SizedBox(height: 10),
+                CircleAvatar(
+                  child: faIcon,
+                  radius: 35.0,
+                  backgroundColor: kBlue,
+                ),
+                SizedBox(height: 5),
+                Text(heading!,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: kOrange),
+                    textAlign: TextAlign.center),
+                SizedBox(height: 5),
+                Divider(),
+                SizedBox(height: 5),
+                Text(body!, textAlign: TextAlign.center),
+              ],
+            ),
           ),
         ),
       ),

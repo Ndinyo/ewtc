@@ -56,20 +56,15 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: [
-                EntranceFader(
-                  offset: Offset(0, 0),
-                  delay: Duration(seconds: 1),
-                  duration: Duration(milliseconds: 800),
-                  child: Container(
-                    // image below the top bar
-                    height: screenSize.height,
-                    width: screenSize.width,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      image: DecorationImage(
-                        image: AssetImage('images/office-desk.jpg'),
-                        fit: BoxFit.fill,
-                      ),
+                Container(
+                  // image below the top bar
+                  height: screenSize.height,
+                  width: screenSize.width,
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.6),
+                    image: DecorationImage(
+                      image: AssetImage('images/office-desk.jpg'),
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
