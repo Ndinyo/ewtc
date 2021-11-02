@@ -1,5 +1,6 @@
 import 'package:ewtc/custom_widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class Services extends StatefulWidget {
@@ -39,22 +40,27 @@ class _ServicesState extends State<Services> {
                   ? Container(
                       child: Column(
                         children: [
-                          TopContainer(
-                            height: 200,
-                            width: screenSize.width,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Services',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                SizedBox(height: 20),
-                                Text(
-                                  'See what we do best',
-                                  style: Theme.of(context).textTheme.headline6,
-                                ),
-                              ],
+                          ClipPath(
+                            clipper: WaveClipperOne(),
+                            child: TopContainer(
+                              height: 200,
+                              width: screenSize.width,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Services',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    'See what we do best',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(height: 10),
@@ -257,22 +263,27 @@ class _ServicesState extends State<Services> {
                   : Container(
                       child: Column(
                         children: [
-                          TopContainer(
-                            height: 750,
-                            width: screenSize.width,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Services',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                SizedBox(height: 20),
-                                Text(
-                                  'See what we do best',
-                                  style: Theme.of(context).textTheme.headline6,
-                                ),
-                              ],
+                          ClipPath(
+                            clipper: WaveClipperOne(),
+                            child: TopContainer(
+                              height: 750,
+                              width: screenSize.width,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Services',
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    'See what we do best',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(height: 20),

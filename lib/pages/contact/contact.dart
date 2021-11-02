@@ -4,6 +4,7 @@ import 'package:ewtc/custom_widgets/custom_widgets.dart';
 import 'package:ewtc/service/service.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class Contact extends StatefulWidget {
   static const String contactId = 'contact';
@@ -45,41 +46,44 @@ class _ContactState extends State<Contact> {
                   ? Container(
                       child: Column(
                         children: [
-                          TopContainer(
-                            height: 200,
-                            width: screenSize.width,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 1),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Contact Us',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(color: Colors.white),
+                          ClipPath(
+                            clipper: WaveClipperOne(),
+                            child: TopContainer(
+                              height: 200,
+                              width: screenSize.width,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 1),
+                                    duration: Duration(milliseconds: 800),
+                                    child: Text(
+                                      'Contact Us',
+                                      textAlign: TextAlign.left,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5!
+                                          .copyWith(color: Colors.white),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Get in touch',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6!
-                                        .copyWith(color: Colors.white),
+                                  SizedBox(height: 10),
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 2),
+                                    duration: Duration(milliseconds: 800),
+                                    child: Text(
+                                      'Get in touch',
+                                      textAlign: TextAlign.left,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline6!
+                                          .copyWith(color: Colors.white),
+                                    ),
                                   ),
-                                ),
-                                Divider(),
-                              ],
+                                  Divider(),
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -125,83 +129,87 @@ class _ContactState extends State<Contact> {
                         ],
                       ),
                     )
-                  : TopContainer(
-                      height: 750,
-                      width: screenSize.width,
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(height: 50),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 1),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Contact Us',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(color: Colors.white),
+                  : ClipPath(
+                      clipper: WaveClipperOne(),
+                      child: TopContainer(
+                        height: 750,
+                        width: screenSize.width,
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 50),
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 1),
+                                    duration: Duration(milliseconds: 800),
+                                    child: Text(
+                                      'Contact Us',
+                                      textAlign: TextAlign.left,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5!
+                                          .copyWith(color: Colors.white),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Get in touch',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6!
-                                        .copyWith(color: Colors.white),
+                                  SizedBox(height: 10),
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 2),
+                                    duration: Duration(milliseconds: 800),
+                                    child: Text(
+                                      'Get in touch',
+                                      textAlign: TextAlign.left,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline6!
+                                          .copyWith(color: Colors.white),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: ContactCard(
-                                    value1: 'Address',
-                                    value2: 'Ongata Rongai, Nairobi, Kenya',
-                                    icon: Icon(Icons.home),
+                            SizedBox(height: 20),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 2),
+                                    duration: Duration(milliseconds: 800),
+                                    child: ContactCard(
+                                      value1: 'Address',
+                                      value2: 'Ongata Rongai, Nairobi, Kenya',
+                                      icon: Icon(Icons.home),
+                                    ),
                                   ),
-                                ),
-                                //SizedBox(width: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 3),
-                                  duration: Duration(milliseconds: 800),
-                                  child: ContactCard(
-                                      value1: 'Contact',
-                                      value2: '+(254) 700 523 823',
-                                      icon: Icon(Icons.phone)),
-                                ),
+                                  //SizedBox(width: 10),
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 3),
+                                    duration: Duration(milliseconds: 800),
+                                    child: ContactCard(
+                                        value1: 'Contact',
+                                        value2: '+(254) 700 523 823',
+                                        icon: Icon(Icons.phone)),
+                                  ),
 
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 4),
-                                  duration: Duration(milliseconds: 800),
-                                  child: ContactCard(
-                                      value1: 'E-Mail',
-                                      value2:
-                                          'hello@elitewritingconsultants.com',
-                                      icon: Icon(Icons.email)),
-                                ),
-                              ]),
-                        ],
+                                  EntranceFader(
+                                    offset: Offset(0, 0),
+                                    delay: Duration(seconds: 4),
+                                    duration: Duration(milliseconds: 800),
+                                    child: ContactCard(
+                                        value1: 'E-Mail',
+                                        value2:
+                                            'hello@elitewritingconsultants.com',
+                                        icon: Icon(Icons.email)),
+                                  ),
+                                ]),
+                          ],
+                        ),
                       ),
                     ),
               SizedBox(height: 20),
