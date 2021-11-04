@@ -2,6 +2,7 @@ import 'package:ewtc/animations/entranceFader.dart';
 import 'package:ewtc/constants/constants.dart';
 import 'package:ewtc/custom_widgets/custom_widgets.dart';
 import 'package:ewtc/service/service.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -14,7 +15,7 @@ class Contact extends StatefulWidget {
   _ContactState createState() => _ContactState();
 }
 
-class _ContactState extends State<Contact> {
+class _ContactState extends State<Contact> with TickerProviderStateMixin {
   double _opacity = 0;
   final fieldsKey = GlobalKey<FormState>();
   final name = TextEditingController();
@@ -22,6 +23,36 @@ class _ContactState extends State<Contact> {
   final subject = TextEditingController();
   final message = TextEditingController();
   final service = Service();
+  bool _showBackTopFab = false;
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController!.offset >= 400) {
+            _showBackTopFab = true;
+          } else {
+            _showBackTopFab = false;
+          }
+        });
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController!.dispose(); // dispose the controller
+    super.dispose();
+  }
+
+  //Move to top callback
+  void _scrollTop() async {
+    await _scrollController!
+        .animateTo(0, duration: Duration(seconds: 3), curve: Curves.linear);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -38,6 +69,7 @@ class _ContactState extends State<Contact> {
             ),
       drawer: EwtcDrawer(),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -212,7 +244,7 @@ class _ContactState extends State<Contact> {
               ResponsiveHandler.isMobileScreen(context)
                   ? EntranceFader(
                       offset: Offset(0, 0),
-                      delay: Duration(seconds: 4),
+                      delay: Duration(seconds: 5),
                       duration: Duration(milliseconds: 800),
                       child: Center(
                         child: Padding(
@@ -223,7 +255,10 @@ class _ContactState extends State<Contact> {
                               Text(
                                 'SAY HELLO',
                                 textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: kOrange),
                               ),
                               SizedBox(height: 10),
                               Text(
@@ -403,7 +438,7 @@ class _ContactState extends State<Contact> {
                     )
                   : EntranceFader(
                       offset: Offset(0, 0),
-                      delay: Duration(seconds: 4),
+                      delay: Duration(seconds: 5),
                       duration: Duration(milliseconds: 800),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -520,8 +555,10 @@ class _ContactState extends State<Contact> {
                                   Text(
                                     'SAY HELLO',
                                     textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5!
+                                        .copyWith(color: kOrange),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
@@ -600,6 +637,14 @@ class _ContactState extends State<Contact> {
           ),
         ),
       ),
+      floatingActionButton: _showBackTopFab == false
+          ? null
+          : FloatingActionButton(
+              backgroundColor: kOrange,
+              foregroundColor: Colors.white,
+              onPressed: _scrollTop,
+              child: Icon(Icons.arrow_upward),
+            ),
     );
   }
 }

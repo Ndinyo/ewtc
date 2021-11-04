@@ -1,9 +1,10 @@
 import 'package:ewtc/animations/entranceFader.dart';
 import 'package:ewtc/constants/constants.dart';
 import 'package:ewtc/custom_widgets/custom_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class Services extends StatefulWidget {
@@ -14,9 +15,37 @@ class Services extends StatefulWidget {
   _ServicesState createState() => _ServicesState();
 }
 
-class _ServicesState extends State<Services> {
+class _ServicesState extends State<Services> with TickerProviderStateMixin {
   double _opacity = 0;
-  //final _scrollController = ScrollController();
+  bool _showBackTopFab = false;
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController!.offset >= 400) {
+            _showBackTopFab = true;
+          } else {
+            _showBackTopFab = false;
+          }
+        });
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController!.dispose(); // dispose the controller
+    super.dispose();
+  }
+
+  //Move to top callback
+  void _scrollTop() async {
+    await _scrollController!
+        .animateTo(0, duration: Duration(seconds: 3), curve: Curves.linear);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +63,7 @@ class _ServicesState extends State<Services> {
             ),
       drawer: EwtcDrawer(),
       body: SingleChildScrollView(
-        //controller: _scrollController,
+        controller: _scrollController,
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +107,7 @@ class _ServicesState extends State<Services> {
                                   ),
                                   Divider(
                                     indent: 2.0,
-                                    endIndent: 20.0,
+                                    endIndent: screenSize.width / 2,
                                     color: Colors.white,
                                   ),
                                 ],
@@ -237,7 +266,7 @@ class _ServicesState extends State<Services> {
                                       CircularPercentIndicator(
                                         animationDuration: 2500,
                                         radius: 120.0,
-                                        lineWidth: 7.0,
+                                        lineWidth: 10.0,
                                         animation: true,
                                         percent: 0.96,
                                         center: Text('96.0%'),
@@ -250,7 +279,7 @@ class _ServicesState extends State<Services> {
                                       CircularPercentIndicator(
                                         animationDuration: 2500,
                                         radius: 120.0,
-                                        lineWidth: 7.0,
+                                        lineWidth: 10.0,
                                         animation: true,
                                         percent: 0.94,
                                         center: Text('94%'),
@@ -263,7 +292,7 @@ class _ServicesState extends State<Services> {
                                       CircularPercentIndicator(
                                         animationDuration: 2500,
                                         radius: 120.0,
-                                        lineWidth: 7.0,
+                                        lineWidth: 10.0,
                                         animation: true,
                                         percent: 0.92,
                                         center: Text('92.0%'),
@@ -321,204 +350,12 @@ class _ServicesState extends State<Services> {
                           ),
                           Divider(
                             indent: 2.0,
-                            endIndent: 5.0,
+                            endIndent: screenSize.width * 0.8,
                             color: Colors.white,
                           ),
                         ],
                       ),
                     ),
-              //SizedBox(height: 20),
-              /*   Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Our services keep you happy.',
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Our heart and soul.',
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
-                            SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Consultancy'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Professional Writing'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Professional Training'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Consultancy'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Professional Writing'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60.0),
-                                      topRight: Radius.circular(60.0),
-                                      bottomRight: Radius.circular(60.0),
-                                      bottomLeft: Radius.circular(60.0),
-                                    )),
-                                    width: 200,
-                                    height: 200,
-                                    child: ListTile(
-                                      leading: CircleAvatar(),
-                                      title: Text('Professional Training'),
-                                      subtitle: Text('Subtitle'),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            Divider(),
-                            SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                              children: [
-                                CircularPercentIndicator(
-                                  animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
-                                  animation: true,
-                                  percent: 0.96,
-                                  center: Text('96.0%'),
-                                  circularStrokeCap:
-                                      CircularStrokeCap.round,
-                                  progressColor: kBlue,
-                                  backgroundColor: Colors.yellow,
-                                  footer: Center(child: Text('Writing')),
-                                ),
-                                CircularPercentIndicator(
-                                  animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
-                                  animation: true,
-                                  percent: 0.94,
-                                  center: Text('94%'),
-                                  circularStrokeCap:
-                                      CircularStrokeCap.round,
-                                  progressColor: kBlue,
-                                  backgroundColor: Colors.yellow,
-                                  footer: Center(child: Text('Training')),
-                                ),
-                                CircularPercentIndicator(
-                                  animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
-                                  animation: true,
-                                  percent: 0.92,
-                                  center: Text('92.0%'),
-                                  circularStrokeCap:
-                                      CircularStrokeCap.round,
-                                  progressColor: kBlue,
-                                  backgroundColor: Colors.yellow,
-                                  footer:
-                                      Center(child: Text('Consultancy')),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            Divider(),
-                            SizedBox(height: 20),
-                          ],
-                        ),
-                      ),
-                    */
               SizedBox(height: 20),
               ResponsiveHandler.isMobileScreen(context)
                   ? Padding(
@@ -533,13 +370,15 @@ class _ServicesState extends State<Services> {
                               child: Column(
                                 children: [
                                   Text(
-                                    'Our services keep you happy.',
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
+                                    'Our services keep you happy',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5!
+                                        .copyWith(color: kOrange),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    'Our heart and soul.',
+                                    'Our heart and soul',
                                     style:
                                         Theme.of(context).textTheme.headline6,
                                   ),
@@ -556,42 +395,48 @@ class _ServicesState extends State<Services> {
                               child: Column(
                                 children: [
                                   ServicesCard(
+                                    asset: 'images/writing.jpg',
                                     heading: 'Professional Writing',
                                     body: writing,
-                                    faIcon: FaIcon(FontAwesomeIcons.pen),
+                                    //faIcon: FaIcon(FontAwesomeIcons.pen),
                                   ),
                                   SizedBox(height: 10),
                                   ServicesCard(
+                                    asset: 'images/training.jpg',
                                     heading: 'Professional Training',
                                     body: training,
-                                    faIcon: FaIcon(
-                                        FontAwesomeIcons.chalkboardTeacher),
+                                    //faIcon: FaIcon(
+                                    //FontAwesomeIcons.chalkboardTeacher),
                                   ),
                                   SizedBox(height: 10),
                                   ServicesCard(
+                                    asset: 'images/mentoring.jpg',
                                     heading: 'Mentorship',
                                     body: mentorship,
-                                    faIcon: FaIcon(FontAwesomeIcons.users),
+                                    //faIcon: FaIcon(FontAwesomeIcons.users),
                                   ),
                                   SizedBox(height: 10),
                                   ServicesCard(
+                                    asset: 'images/research.jpg',
                                     heading: 'Research',
                                     body: research,
-                                    faIcon:
-                                        FaIcon(FontAwesomeIcons.researchgate),
+                                    //faIcon:
+                                    //FaIcon(FontAwesomeIcons.researchgate),
                                   ),
                                   SizedBox(height: 10),
                                   ServicesCard(
+                                    asset: 'images/consult.jpg',
                                     heading: 'Consultancy',
                                     body: consultancy,
-                                    faIcon: FaIcon(FontAwesomeIcons.infoCircle),
+                                    //faIcon: FaIcon(FontAwesomeIcons.infoCircle),
                                   ),
                                   SizedBox(height: 10),
                                   ServicesCard(
+                                    asset: 'images/account.jpg',
                                     heading: 'Accounts Management',
                                     body: aManagement,
-                                    faIcon:
-                                        FaIcon(FontAwesomeIcons.addressBook),
+                                    //faIcon:
+                                    //FaIcon(FontAwesomeIcons.addressBook),
                                   ),
                                 ],
                               ),
@@ -602,15 +447,15 @@ class _ServicesState extends State<Services> {
                           EntranceFader(
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 5),
-                            duration: Duration(milliseconds: 800),
+                            duration: Duration(seconds: 4),
                             child: Row(
                               //show circlular progress
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
+                                  radius: 90.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.96,
                                   center: Text('96.0%'),
@@ -621,8 +466,8 @@ class _ServicesState extends State<Services> {
                                 ),
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
+                                  radius: 90.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.94,
                                   center: Text('94.0%'),
@@ -634,7 +479,7 @@ class _ServicesState extends State<Services> {
                                 /* CircularPercentIndicator(
                                   animationDuration: 2500,
                                   radius: 120.0,
-                                  lineWidth: 7.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.92,
                                   center: Text('92.0%'),
@@ -645,8 +490,8 @@ class _ServicesState extends State<Services> {
                                 ), */
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 7.0,
+                                  radius: 90.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.95,
                                   center: Text('95.0%'),
@@ -665,17 +510,30 @@ class _ServicesState extends State<Services> {
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 6),
                             duration: Duration(milliseconds: 800),
+                            child: Text(
+                              'Training Ongoing!',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: kOrange),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 6),
+                            duration: Duration(milliseconds: 800),
                             child: Container(
-                              height: 300.0,
-                              width: screenSize.width,
+                              height: 500.0,
+                              width: screenSize.width - 100,
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.8),
+                                //color: Colors.black.withOpacity(0.8),
                                 image: DecorationImage(
-                                  image: AssetImage('images/writing-desk.jpg'),
+                                  image: AssetImage('images/poster.jpg'),
                                   fit: BoxFit.fill,
                                 ),
                               ),
-                              child: Padding(
+                              /* child: Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -690,7 +548,7 @@ class _ServicesState extends State<Services> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ), */
                             ),
                           ),
                           SizedBox(height: 10),
@@ -709,13 +567,15 @@ class _ServicesState extends State<Services> {
                               child: Column(
                                 children: [
                                   Text(
-                                    'Our services keep you happy.',
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
+                                    'Our services keep you happy',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5!
+                                        .copyWith(color: kOrange),
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    'Our heart and soul.',
+                                    'Our heart and soul',
                                     style:
                                         Theme.of(context).textTheme.headline6,
                                   ),
@@ -734,20 +594,23 @@ class _ServicesState extends State<Services> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ServicesCard(
+                                    asset: 'images/writing.jpg',
                                     heading: 'Professional Writing',
                                     body: writing,
-                                    faIcon: FaIcon(FontAwesomeIcons.pen),
+                                    //faIcon: FaIcon(FontAwesomeIcons.pen),
                                   ),
                                   ServicesCard(
+                                    asset: 'images/training.jpg',
                                     heading: 'Professional Training',
                                     body: training,
-                                    faIcon: FaIcon(
-                                        FontAwesomeIcons.chalkboardTeacher),
+                                    //faIcon: FaIcon(
+                                    //FontAwesomeIcons.chalkboardTeacher),
                                   ),
                                   ServicesCard(
+                                    asset: 'images/mentoring.jpg',
                                     heading: 'Mentorship',
                                     body: mentorship,
-                                    faIcon: FaIcon(FontAwesomeIcons.users),
+                                    //faIcon: FaIcon(FontAwesomeIcons.users),
                                   ),
                                 ],
                               ),
@@ -764,21 +627,24 @@ class _ServicesState extends State<Services> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ServicesCard(
+                                    asset: 'images/research.jpg',
                                     heading: 'Research',
                                     body: research,
-                                    faIcon:
-                                        FaIcon(FontAwesomeIcons.researchgate),
+                                    //faIcon:
+                                    //FaIcon(FontAwesomeIcons.researchgate),
                                   ),
                                   ServicesCard(
+                                    asset: 'images/consult.jpg',
                                     heading: 'Consultancy',
                                     body: consultancy,
-                                    faIcon: FaIcon(FontAwesomeIcons.infoCircle),
+                                    //faIcon: FaIcon(FontAwesomeIcons.infoCircle),
                                   ),
                                   ServicesCard(
+                                    asset: 'images/account.jpg',
                                     heading: 'Accounts Management',
                                     body: aManagement,
-                                    faIcon:
-                                        FaIcon(FontAwesomeIcons.addressBook),
+                                    //faIcon:
+                                    //FaIcon(FontAwesomeIcons.addressBook),
                                   ),
                                 ],
                               ),
@@ -790,7 +656,7 @@ class _ServicesState extends State<Services> {
                           EntranceFader(
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 6),
-                            duration: Duration(milliseconds: 800),
+                            duration: Duration(seconds: 4),
                             child: Row(
                               //show circlular progress
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -798,7 +664,7 @@ class _ServicesState extends State<Services> {
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
                                   radius: 120.0,
-                                  lineWidth: 7.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.96,
                                   center: Text('96.0%'),
@@ -810,7 +676,7 @@ class _ServicesState extends State<Services> {
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
                                   radius: 120.0,
-                                  lineWidth: 7.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.94,
                                   center: Text('94.0%'),
@@ -822,7 +688,7 @@ class _ServicesState extends State<Services> {
                                 /* CircularPercentIndicator(
                                   animationDuration: 2500,
                                   radius: 120.0,
-                                  lineWidth: 7.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.92,
                                   center: Text('92.0%'),
@@ -834,7 +700,7 @@ class _ServicesState extends State<Services> {
                                 CircularPercentIndicator(
                                   animationDuration: 2500,
                                   radius: 120.0,
-                                  lineWidth: 7.0,
+                                  lineWidth: 10.0,
                                   animation: true,
                                   percent: 0.95,
                                   center: Text('95.0%'),
@@ -853,17 +719,30 @@ class _ServicesState extends State<Services> {
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 6),
                             duration: Duration(milliseconds: 800),
+                            child: Text(
+                              'Training Ongoing!',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: kOrange),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 6),
+                            duration: Duration(milliseconds: 800),
                             child: Container(
-                              height: 300.0,
-                              width: screenSize.width,
+                              height: 500.0,
+                              width: (screenSize.width / 2) - 100,
                               decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(0.8),
                                 image: DecorationImage(
-                                  image: AssetImage('images/writing-desk.jpg'),
+                                  image: AssetImage('images/poster.jpg'),
                                   fit: BoxFit.fill,
                                 ),
                               ),
-                              child: Padding(
+                              /* child: Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -878,7 +757,7 @@ class _ServicesState extends State<Services> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ), */
                             ),
                           ),
                         ],
@@ -888,6 +767,14 @@ class _ServicesState extends State<Services> {
           ),
         ),
       ),
+      floatingActionButton: _showBackTopFab == false
+          ? null
+          : FloatingActionButton(
+              backgroundColor: kOrange,
+              foregroundColor: Colors.white,
+              onPressed: _scrollTop,
+              child: Icon(Icons.arrow_upward),
+            ),
     );
   }
 }

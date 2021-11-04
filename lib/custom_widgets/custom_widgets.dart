@@ -378,16 +378,22 @@ class ContactCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Colors.white,
+        ),
+        borderRadius: BorderRadius.circular(30),
+      ),
       elevation: 5,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(60.0),
-          topRight: Radius.circular(60.0),
-          bottomRight: Radius.circular(60.0),
-          bottomLeft: Radius.circular(60.0),
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
         )),
-        width: 200,
+        width: 250,
         height: 140,
         child: Padding(
           padding: const EdgeInsets.all(4.0),
@@ -422,34 +428,42 @@ class ServicesCard extends StatelessWidget {
   final String? heading;
   final String? body;
   final FaIcon? faIcon;
-  const ServicesCard({Key? key, this.body, this.faIcon, this.heading})
+  final String? asset;
+  const ServicesCard(
+      {Key? key, this.body, this.faIcon, this.heading, this.asset})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Colors.white,
+        ),
+        borderRadius: BorderRadius.circular(40),
+      ),
       child: Container(
         decoration: BoxDecoration(
+            color: Colors.black.withOpacity(1.0),
+            image: DecorationImage(
+              image: AssetImage(asset!),
+              fit: BoxFit.fill,
+            ),
             borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(60.0),
-          topRight: Radius.circular(60.0),
-          bottomRight: Radius.circular(60.0),
-          bottomLeft: Radius.circular(60.0),
-        )),
+              topLeft: Radius.circular(40.0),
+              topRight: Radius.circular(40.0),
+              bottomRight: Radius.circular(40.0),
+              bottomLeft: Radius.circular(40.0),
+            )),
         width: 300,
-        height: 350,
+        height: 310,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 SizedBox(height: 10),
-                CircleAvatar(
-                  child: faIcon,
-                  radius: 35.0,
-                  backgroundColor: kBlue,
-                ),
-                SizedBox(height: 5),
                 Text(heading!,
                     style: Theme.of(context)
                         .textTheme
@@ -457,9 +471,14 @@ class ServicesCard extends StatelessWidget {
                         .copyWith(color: kOrange),
                     textAlign: TextAlign.center),
                 SizedBox(height: 5),
-                Divider(),
+                Divider(color: kBlue),
                 SizedBox(height: 5),
-                Text(body!, textAlign: TextAlign.center),
+                Text(
+                  body!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w400),
+                ),
               ],
             ),
           ),

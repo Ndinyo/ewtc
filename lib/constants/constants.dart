@@ -39,7 +39,7 @@ const String training =
     'Being an integral aspect of this career path, professional training is essential which is done initially to set you apart from other writers. We offer training through practice and instruction over a set period of time. While transitioning to a professional writer requires effort and smart work, the skills and training we offer will develop you fully to specific useful competencies. Eventually, graduate from this exercise and we shall assign you projects depending on your proactiveness.';
 
 const String mentorship =
-    'Being an indispensable part of work and culture, it is of utmost importnace to equip yourself with the right mentors. Our abled mentors will take time to understand your goals and help you set yourself up for significant career transitions. It’s important to work productively with us to achieve your set of goals. ';
+    'Being an indispensable part of work and culture, it is of utmost importance to equip yourself with the right mentors. Our abled mentors will take time to understand your goals and help you set yourself up for significant career transitions. It’s important to work productively with us to achieve your set of goals. ';
 
 const String research =
     'We employ systemic investigation into and study of materials and sources, with sole aim to establish facts, reach conclusions and make informed decisions.';
@@ -51,4 +51,4 @@ const String sDevelopment =
     'We also pride ourselves in Software Development, coupled with design and development skills. Not only do we write but also develop beautiful applications ranging from mobile to web and custom softwares to suit your business needs.';
 
 const String aManagement =
-    'Top-notch account management strategies are a must for any writing account. Our professional team is equiped with the expertise on up-to-date account management. Meaning accounts get positive ratings, gets an influx of orders and great reviews which ensures accounts are future-proofed and durable., ';
+    'Top-notch account management strategies are a must for any writing account. Our professional team is equiped with the expertise on up-to-date account management. Meaning accounts get positive ratings, gets an influx of orders and great reviews which ensures accounts are future-proofed and durable.';
