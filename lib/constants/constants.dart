@@ -36,7 +36,7 @@ const String writing =
     'Our team of seasoned professional writers are skilled in Essay writing, Research paper witing, Thesis/Dissertation, Research proposal, Literature review, Lab report and Annotated bibliography. We employ the following, formal and unbiased, clear and precise language, focused and well-structured text, well-sourced, correct and consistent methodologies in our writing.';
 
 const String training =
-    'Being an integral aspect of this career path, professional training is essential which is done initially to set you apart from other writers. We offer training through practice and instruction over a set period of time. While transitioning to a professional writer requires effort and smart work, the skills and training we offer will develop you fully to specific useful competencies. Eventually, graduate from this exercise and we shall assign you projects depending on your proactiveness.';
+    'Being an integral aspect, professional training is essential in order to become a top-notch writer. We offer training through practice and instruction which requires effort and smart work, since the skills and training we offer will develop you fully to specific useful competencies.';
 
 const String mentorship =
     'Being an indispensable part of work and culture, it is of utmost importance to equip yourself with the right mentors. Our abled mentors will take time to understand your goals and help you set yourself up for significant career transitions. It’s important to work productively with us to achieve your set of goals. ';

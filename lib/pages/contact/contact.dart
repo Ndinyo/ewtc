@@ -225,7 +225,6 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                       value2: '+(254) 700 523 823',
                                       icon: Icon(Icons.phone)),
                                 ),
-
                                 EntranceFader(
                                   offset: Offset(0, 0),
                                   delay: Duration(seconds: 4),
@@ -266,7 +265,6 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.headline6,
                               ),
-                              Divider(),
                               Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Container(
@@ -279,7 +277,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                     topRight: Radius.circular(30.0),
                                   )),
                                   width: 300,
-                                  height: 360,
+                                  height: 350,
                                   child: Form(
                                     key: fieldsKey,
                                     child: Column(
@@ -431,6 +429,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 10),
                             ],
                           ),
                         ),

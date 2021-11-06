@@ -437,50 +437,59 @@ class ServicesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      shape: RoundedRectangleBorder(
+      /* shape: RoundedRectangleBorder(
         side: BorderSide(
           color: Colors.white,
         ),
-        borderRadius: BorderRadius.circular(40),
-      ),
+        borderRadius: BorderRadius.circular(30),
+      ), */
       child: Container(
-        decoration: BoxDecoration(
-            color: Colors.black.withOpacity(1.0),
-            image: DecorationImage(
-              image: AssetImage(asset!),
-              fit: BoxFit.fill,
-            ),
+        /* decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0),
-              topRight: Radius.circular(40.0),
-              bottomRight: Radius.circular(40.0),
-              bottomLeft: Radius.circular(40.0),
-            )),
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
+        )), */
         width: 300,
-        height: 310,
+        height: 360,
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                SizedBox(height: 10),
-                Text(heading!,
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    //color: Colors.black.withOpacity(1.0),
+                    image: DecorationImage(
+                      image: AssetImage(asset!),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(40.0),
+                      bottomLeft: Radius.circular(40.0),
+                    )),
+                width: 300,
+                height: 120,
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(heading!,
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
                         .copyWith(color: kOrange),
                     textAlign: TextAlign.center),
-                SizedBox(height: 5),
-                Divider(color: kBlue),
-                SizedBox(height: 5),
-                Text(
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
                   body!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w400),
+                  style: TextStyle(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
