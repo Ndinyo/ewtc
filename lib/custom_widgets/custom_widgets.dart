@@ -316,7 +316,8 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ListTile(
                 title: Text(
                   'Home',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w400),
                 ),
                 onTap: () {
                   setState(() {
@@ -327,7 +328,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title: Text('About', style: TextStyle(color: Colors.white)),
+                title: Text('About',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
                     //Navigator.pushNamed(context, About.aboutId);
@@ -337,7 +340,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title: Text('Services', style: TextStyle(color: Colors.white)),
+                title: Text('Services',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
                     Navigator.pushNamed(context, Services.servicesId);
@@ -347,8 +352,9 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ),
               Divider(),
               ListTile(
-                title:
-                    Text('Contact Us', style: TextStyle(color: Colors.white)),
+                title: Text('Contact Us',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
                     Navigator.pushNamed(context, Contact.contactId);

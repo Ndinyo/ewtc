@@ -329,19 +329,23 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                             ),
                           ),
                           SizedBox(height: 10),
-                          EntranceFader(
-                            offset: Offset(0, 0),
-                            delay: Duration(seconds: 6),
-                            duration: Duration(milliseconds: 800),
-                            child: Container(
-                              height: 500.0,
-                              width: screenSize.width - 50,
-                              decoration: BoxDecoration(
-                                //color: Colors.black.withOpacity(0.8),
-                                image: DecorationImage(
-                                  image: AssetImage('images/poster.jpg'),
-                                  fit: BoxFit.fill,
-                                ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: EntranceFader(
+                              offset: Offset(0, 0),
+                              delay: Duration(seconds: 6),
+                              duration: Duration(milliseconds: 800),
+                              child: Container(
+                                height: 500.0,
+                                width: screenSize.width,
+                                child: Image.asset('images/poster.jpg'),
+                                /* decoration: BoxDecoration(
+                                  //color: Colors.black.withOpacity(0.8),
+                                  image: DecorationImage(
+                                    image: AssetImage('images/poster.jpg'),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ), */
                               ),
                             ),
                           ),

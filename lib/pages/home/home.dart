@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   // image below the top bar
-                  height: screenSize.height,
+                  height: screenSize.height - 70,
                   width: screenSize.width,
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.6),
@@ -342,139 +342,134 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                //Bottom copyright section
-                ResponsiveHandler.isMobileScreen(context)
-                    ? Positioned(
-                        bottom: 30,
-                        left: 5,
-                        right: 5,
-                        child: Container(
-                          width: screenSize.width,
-                          child: Column(
-                            //mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 15,
-                                    child: InkWell(
-                                      onTap: () {
-                                        setState(() {});
-                                      },
-                                      child: FaIcon(FontAwesomeIcons.facebook),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(
-                                    radius: 15,
-                                    child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          service.lauchTwitter();
-                                        });
-                                      },
-                                      child: FaIcon(FontAwesomeIcons.twitter),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(
-                                    radius: 15,
-                                    child: InkWell(
-                                      onTap: () {
-                                        setState(() {});
-                                      },
-                                      child: FaIcon(FontAwesomeIcons.linkedin),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(
-                                    backgroundColor: Colors.teal,
-                                    radius: 15,
-                                    child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          service.lauchWhatsApp();
-                                        });
-                                      },
-                                      child: FaIcon(FontAwesomeIcons.whatsapp),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Text('© Copyright 2021 All rights reserved.',
-                                  style: TextStyle(color: kBlue)),
-                            ],
-                          ),
-                        ))
-                    : Positioned(
-                        bottom: 30,
-                        left: 50,
-                        right: 50,
-                        child: Container(
-                          width: screenSize.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 15,
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {});
-                                  },
-                                  child: FaIcon(FontAwesomeIcons.facebook),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              CircleAvatar(
-                                radius: 15,
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      service.lauchTwitter();
-                                    });
-                                  },
-                                  child: FaIcon(FontAwesomeIcons.twitter),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              CircleAvatar(
-                                radius: 15,
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {});
-                                  },
-                                  child: FaIcon(FontAwesomeIcons.linkedin),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              CircleAvatar(
-                                backgroundColor: Colors.teal,
-                                radius: 15,
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      service.lauchWhatsApp();
-                                    });
-                                  },
-                                  child: FaIcon(FontAwesomeIcons.whatsapp),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                '© Copyright 2021 All rights reserved.',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle1!
-                                    .copyWith(color: kBlue),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
               ],
             ),
+            //Bottom copyright section
+            ResponsiveHandler.isMobileScreen(context)
+                ? Container(
+                    color: Colors.black87,
+                    width: screenSize.width,
+                    height: 70,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 15,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {});
+                                },
+                                child: FaIcon(FontAwesomeIcons.facebook),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            CircleAvatar(
+                              radius: 15,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    service.lauchTwitter();
+                                  });
+                                },
+                                child: FaIcon(FontAwesomeIcons.twitter),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            CircleAvatar(
+                              radius: 15,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {});
+                                },
+                                child: FaIcon(FontAwesomeIcons.linkedin),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            CircleAvatar(
+                              backgroundColor: Colors.teal,
+                              radius: 15,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    service.lauchWhatsApp();
+                                  });
+                                },
+                                child: FaIcon(FontAwesomeIcons.whatsapp),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Text('© Copyright 2021 All rights reserved.',
+                            style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                  )
+                : Container(
+                    color: Colors.black87,
+                    height: 70,
+                    width: screenSize.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 15,
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {});
+                            },
+                            child: FaIcon(FontAwesomeIcons.facebook),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        CircleAvatar(
+                          radius: 15,
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                service.lauchTwitter();
+                              });
+                            },
+                            child: FaIcon(FontAwesomeIcons.twitter),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        CircleAvatar(
+                          radius: 15,
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {});
+                            },
+                            child: FaIcon(FontAwesomeIcons.linkedin),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        CircleAvatar(
+                          backgroundColor: Colors.teal,
+                          radius: 15,
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                service.lauchWhatsApp();
+                              });
+                            },
+                            child: FaIcon(FontAwesomeIcons.whatsapp),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          '© Copyright 2021 All rights reserved.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
           ],
         ),
       ),
