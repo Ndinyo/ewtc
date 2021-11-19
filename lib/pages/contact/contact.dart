@@ -70,6 +70,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
       drawer: EwtcDrawer(),
       body: SingleChildScrollView(
         controller: _scrollController,
+        physics: ClampingScrollPhysics(),
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

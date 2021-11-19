@@ -1,10 +1,11 @@
 import 'package:ewtc/constants/constants.dart';
-//import 'package:ewtc/pages/about/about.dart';
+import 'package:ewtc/pages/about/about.dart';
 import 'package:ewtc/pages/contact/contact.dart';
 import 'package:ewtc/pages/home/home.dart';
 import 'package:ewtc/pages/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TopContainer extends StatelessWidget {
   final Color? color;
@@ -126,7 +127,8 @@ class _AppBarContentsState extends State<AppBarContents> {
                             children: [
                               Text(
                                 'Home',
-                                style: TextStyle(
+                                style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.w400,
                                   color: _isHovering[0]
                                       ? Colors.blue.shade200
                                       : Colors.white,
@@ -158,7 +160,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                           },
                           onTap: () {
                             setState(() {
-                              //Navigator.pushNamed(context, About.aboutId);
+                              Navigator.pushNamed(context, About.aboutId);
                             });
                           },
                           child: Column(
@@ -166,7 +168,8 @@ class _AppBarContentsState extends State<AppBarContents> {
                             children: [
                               Text(
                                 'About',
-                                style: TextStyle(
+                                style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.w400,
                                   color: _isHovering[1]
                                       ? Colors.blue.shade200
                                       : Colors.white,
@@ -206,7 +209,8 @@ class _AppBarContentsState extends State<AppBarContents> {
                             children: [
                               Text(
                                 'Services',
-                                style: TextStyle(
+                                style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.w400,
                                   color: _isHovering[2]
                                       ? Colors.blue.shade200
                                       : Colors.white,
@@ -246,7 +250,8 @@ class _AppBarContentsState extends State<AppBarContents> {
                             children: [
                               Text(
                                 'Contact',
-                                style: TextStyle(
+                                style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.w400,
                                   color: _isHovering[3]
                                       ? Colors.blue.shade200
                                       : Colors.white,
@@ -333,7 +338,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
                         color: Colors.white, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
-                    //Navigator.pushNamed(context, About.aboutId);
+                    Navigator.pushNamed(context, About.aboutId);
                   });
                 },
                 trailing: Icon(Icons.arrow_right_alt, color: Colors.white),

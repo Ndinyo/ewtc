@@ -56,15 +56,26 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: [
-                Container(
-                  // image below the top bar
-                  height: screenSize.height - 70,
-                  width: screenSize.width,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.6),
-                    image: DecorationImage(
-                      image: AssetImage('images/office-desk.jpg'),
-                      fit: BoxFit.fill,
+                ShaderMask(
+                  blendMode: BlendMode.colorBurn,
+                  shaderCallback: (Rect bounds) {
+                    return LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Colors.black12, Colors.black12],
+                    ).createShader(bounds);
+                  },
+                  child: Container(
+                    // image below the top bar
+                    height: screenSize.height - 70,
+                    width: screenSize.width,
+                    decoration: BoxDecoration(
+                      //color: Colors.black.withOpacity(0.6),
+                      color: Colors.white,
+                      image: DecorationImage(
+                        image: AssetImage('images/office-desk.jpg'),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
@@ -92,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
-                                            color: kOrange,
+                                            color: Colors.white,
                                             fontSize: 20),
                                       ),
                                     ),
@@ -114,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
-                                            color: kOrange,
+                                            color: Colors.white,
                                             fontSize: 20),
                                       ),
                                     ),
@@ -130,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
-                                        color: kBlue,
+                                        color: Colors.white,
                                         fontSize: 40),
                                   ),
                                 ),
@@ -144,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
-                                        color: kBlue,
+                                        color: Colors.white,
                                         fontSize: 40),
                                   ),
                                 ),
@@ -165,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
-                                            color: kOrange,
+                                            color: Colors.white,
                                             fontSize: 30),
                                       ),
                                     ),
@@ -187,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
-                                            color: kOrange,
+                                            color: Colors.white,
                                             fontSize: 30),
                                       ),
                                     ),
@@ -203,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
-                                        color: kBlue,
+                                        color: Colors.white,
                                         fontSize: 60),
                                   ),
                                 ),
@@ -217,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
-                                        color: kBlue,
+                                        color: Colors.white,
                                         fontSize: 60),
                                   ),
                                 ),

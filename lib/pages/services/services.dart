@@ -7,14 +7,6 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-/* class ScrollBehavior extends MaterialScrollBehavior {
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
-} */
-
 class Services extends StatefulWidget {
   static const String servicesId = 'services';
   const Services({Key? key}) : super(key: key);
@@ -25,8 +17,15 @@ class Services extends StatefulWidget {
 
 class _ServicesState extends State<Services> with TickerProviderStateMixin {
   double _opacity = 0;
+  double _scrollPosition = 0;
   bool _showBackTopFab = false;
   ScrollController? _scrollController;
+
+  _scrollListener() {
+    setState(() {
+      _scrollPosition = _scrollController!.position.pixels;
+    });
+  }
 
   @override
   void initState() {
@@ -40,6 +39,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
           }
         });
       });
+    _scrollController!.addListener(_scrollListener);
     super.initState();
   }
 
@@ -57,7 +57,11 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    var screenSize = MediaQuery.of(context).size;
+    _opacity = _scrollPosition < screenSize.height * 0.40
+        ? _scrollPosition / (screenSize.height * 0.40)
+        : 1;
+    //final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: ResponsiveHandler.isMobileScreen(context)
@@ -72,6 +76,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
       drawer: EwtcDrawer(),
       body: SingleChildScrollView(
         controller: _scrollController,
+        physics: ClampingScrollPhysics(),
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -336,9 +341,12 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               delay: Duration(seconds: 6),
                               duration: Duration(milliseconds: 800),
                               child: Container(
-                                height: 500.0,
+                                //height: 500.0,
                                 width: screenSize.width,
-                                child: Image.asset('images/poster.jpg'),
+                                child: Image.asset(
+                                  'images/poster.jpg',
+                                  fit: BoxFit.cover,
+                                ),
                                 /* decoration: BoxDecoration(
                                   //color: Colors.black.withOpacity(0.8),
                                   image: DecorationImage(

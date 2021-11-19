@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 const Color kOrange = Color(0xFFF57C00);
 const Color kBlue = Color(0xFF1A237E);
 const colorizeColors = [
-  Colors.pink,
-  Colors.purple,
-  Colors.blue,
-  Colors.teal,
+  kOrange,
+  //Colors.purple,
+  kBlue,
+  Colors.white,
+  //Colors.pink,
   Colors.yellow,
-  Colors.red
+  //Colors.red
 ];
 const colorizeTextStyleD = TextStyle(fontSize: 35, fontFamily: 'Horizon');
 const colorizeTextStyleM = TextStyle(fontSize: 25, fontFamily: 'Horizon');
