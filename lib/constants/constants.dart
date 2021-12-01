@@ -11,7 +11,7 @@ const colorizeColors = [
   Colors.yellow,
   //Colors.red
 ];
-const colorizeTextStyleD = TextStyle(fontSize: 35, fontFamily: 'Horizon');
+const colorizeTextStyleD = TextStyle(fontSize: 30, fontFamily: 'Horizon');
 const colorizeTextStyleM = TextStyle(fontSize: 25, fontFamily: 'Horizon');
 
 const kTextFieldDecoration = InputDecoration(

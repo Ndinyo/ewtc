@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> {
                 //New Home starts here
                 Positioned(
                   top: 200,
-                  right: 10,
-                  left: 10,
+                  right: 2,
+                  left: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -99,12 +99,12 @@ class _HomePageState extends State<HomePage> {
                                       delay: Duration(seconds: 1),
                                       duration: Duration(milliseconds: 800),
                                       child: Text(
-                                        'HELLO!',
+                                        'HELLO ',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white,
-                                            fontSize: 20),
+                                            fontSize: 25),
                                       ),
                                     ),
                                     EntranceFader(
@@ -116,19 +116,6 @@ class _HomePageState extends State<HomePage> {
                                         height: screenSize.height * 0.05,
                                       ),
                                     ),
-                                    EntranceFader(
-                                      offset: Offset(0, 0),
-                                      delay: Duration(seconds: 1),
-                                      duration: Duration(milliseconds: 800),
-                                      child: Text(
-                                        'WELCOME TO',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.merriweather(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: 20),
-                                      ),
-                                    ),
                                   ],
                                 ),
                                 SizedBox(height: 10),
@@ -137,26 +124,26 @@ class _HomePageState extends State<HomePage> {
                                   delay: Duration(seconds: 2),
                                   duration: Duration(milliseconds: 800),
                                   child: Text(
-                                    'THE HELM',
+                                    'WELCOME TO THE',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
-                                        fontSize: 40),
+                                        fontSize: 30),
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: 10),
                                 EntranceFader(
                                   offset: Offset(0, 0),
                                   delay: Duration(seconds: 2),
                                   duration: Duration(milliseconds: 800),
                                   child: Text(
-                                    'OF WRITING',
+                                    'HELM OF WRITING',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.merriweather(
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
-                                        fontSize: 40),
+                                        fontSize: 30),
                                   ),
                                 ),
                               ],
@@ -172,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                                       delay: Duration(seconds: 1),
                                       duration: Duration(milliseconds: 800),
                                       child: Text(
-                                        'HELLO!',
+                                        'HELLO ',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
@@ -189,48 +176,28 @@ class _HomePageState extends State<HomePage> {
                                         height: screenSize.height * 0.05,
                                       ),
                                     ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
                                     EntranceFader(
                                       offset: Offset(0, 0),
-                                      delay: Duration(seconds: 1),
+                                      delay: Duration(seconds: 2),
                                       duration: Duration(milliseconds: 800),
                                       child: Text(
-                                        'WELCOME TO',
+                                        'WELCOME TO THE HELM OF WRITING',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.merriweather(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white,
-                                            fontSize: 30),
+                                            fontSize: 40),
                                       ),
                                     ),
                                   ],
-                                ),
-                                SizedBox(height: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'THE HELM',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.merriweather(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                        fontSize: 60),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'OF WRITING',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.merriweather(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                        fontSize: 60),
-                                  ),
                                 ),
                               ],
                             ),
@@ -268,8 +235,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 30),
                                   Container(
-                                      width: 140,
-                                      height: 30,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(100.0),
@@ -325,8 +290,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 30),
                                   Container(
-                                      width: 160,
-                                      height: 40,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(100.0),
