@@ -1,5 +1,5 @@
 import 'package:ewtc/constants/constants.dart';
-import 'package:ewtc/pages/about/about.dart';
+//import 'package:ewtc/pages/about/about.dart';
 import 'package:ewtc/pages/contact/contact.dart';
 import 'package:ewtc/pages/home/home.dart';
 import 'package:ewtc/pages/services/services.dart';
@@ -27,10 +27,41 @@ class TopContainer extends StatelessWidget {
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Colors.blueAccent.shade100,
-              kBlue,
+              kOrange,
+              Colors.orange.shade100,
             ]),
       ),
+      child: child,
+      color: color,
+      width: width,
+    );
+  }
+}
+
+class TopContainer2 extends StatelessWidget {
+  final Color? color;
+  final double? width;
+  final double? height;
+  final Widget? child;
+  final EdgeInsets? padding;
+
+  const TopContainer2(
+      {Key? key, this.padding, this.child, this.color, this.height, this.width})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+          /*  gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Colors.white,
+              Colors.white,
+            ]), */
+          ),
       child: child,
       color: color,
       width: width,
@@ -131,7 +162,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   fontWeight: FontWeight.w400,
                                   color: _isHovering[0]
                                       ? Colors.blue.shade200
-                                      : Colors.white,
+                                      : kOrange,
                                 ),
                               ),
                               SizedBox(height: 5),
@@ -143,7 +174,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                 child: Container(
                                   height: 2,
                                   width: 20,
-                                  color: Colors.white,
+                                  color: kOrange,
                                 ),
                               ),
                             ],
@@ -160,7 +191,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                           },
                           onTap: () {
                             setState(() {
-                              Navigator.pushNamed(context, About.aboutId);
+                              //Navigator.pushNamed(context, About.aboutId);
                             });
                           },
                           child: Column(
@@ -172,7 +203,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   fontWeight: FontWeight.w400,
                                   color: _isHovering[1]
                                       ? Colors.blue.shade200
-                                      : Colors.white,
+                                      : kOrange,
                                 ),
                               ),
                               SizedBox(height: 5),
@@ -184,7 +215,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                 child: Container(
                                   height: 2,
                                   width: 20,
-                                  color: Colors.white,
+                                  color: kOrange,
                                 ),
                               ),
                             ],
@@ -213,7 +244,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   fontWeight: FontWeight.w400,
                                   color: _isHovering[2]
                                       ? Colors.blue.shade200
-                                      : Colors.white,
+                                      : kOrange,
                                 ),
                               ),
                               SizedBox(height: 5),
@@ -225,7 +256,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                 child: Container(
                                   height: 2,
                                   width: 20,
-                                  color: Colors.white,
+                                  color: kOrange,
                                 ),
                               ),
                             ],
@@ -254,7 +285,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                   fontWeight: FontWeight.w400,
                                   color: _isHovering[3]
                                       ? Colors.blue.shade200
-                                      : Colors.white,
+                                      : kOrange,
                                 ),
                               ),
                               SizedBox(height: 5),
@@ -266,7 +297,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                                 child: Container(
                                   height: 2,
                                   width: 20,
-                                  color: Colors.white,
+                                  color: kOrange,
                                 ),
                               ),
                             ],
@@ -277,7 +308,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                   ),
                 ],
               ),
-              Divider(),
+              Divider(color: Colors.white),
             ],
           ),
         ),
@@ -299,7 +330,7 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.6),
+          color: Colors.white,
         ),
         child: Padding(
           padding: EdgeInsets.all(10),
@@ -321,51 +352,50 @@ class _EwtcDrawerState extends State<EwtcDrawer> {
               ListTile(
                 title: Text(
                   'Home',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w400),
+                  style: TextStyle(color: kOrange, fontWeight: FontWeight.w400),
                 ),
                 onTap: () {
                   setState(() {
                     Navigator.pushNamed(context, HomePage.homeId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
+                trailing: Icon(Icons.arrow_right_alt, color: kOrange),
               ),
               Divider(),
               ListTile(
                 title: Text('About',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w400)),
+                    style:
+                        TextStyle(color: kOrange, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
-                    Navigator.pushNamed(context, About.aboutId);
+                    //Navigator.pushNamed(context, About.aboutId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
+                trailing: Icon(Icons.arrow_right_alt, color: kOrange),
               ),
               Divider(),
               ListTile(
                 title: Text('Services',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w400)),
+                    style:
+                        TextStyle(color: kOrange, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
                     Navigator.pushNamed(context, Services.servicesId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
+                trailing: Icon(Icons.arrow_right_alt, color: kOrange),
               ),
               Divider(),
               ListTile(
                 title: Text('Contact Us',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w400)),
+                    style:
+                        TextStyle(color: kOrange, fontWeight: FontWeight.w400)),
                 onTap: () {
                   setState(() {
                     Navigator.pushNamed(context, Contact.contactId);
                   });
                 },
-                trailing: Icon(Icons.arrow_right_alt, color: Colors.white),
+                trailing: Icon(Icons.arrow_right_alt, color: kOrange),
               ),
               Divider(),
             ],
@@ -448,26 +478,31 @@ class ServicesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      /* shape: RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         side: BorderSide(
           color: Colors.white,
         ),
-        borderRadius: BorderRadius.circular(30),
-      ), */
-      child: Container(
-        /* decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          topRight: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0),
-        )), */
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: SizedBox(
         width: 300,
-        height: 360,
-        child: Center(
+        height: 400,
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
-              Container(
+              ClipRRect(
+                child: Container(
+                  width: 250,
+                  height: 90,
+                  child: Image.asset(
+                    asset!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              /*  Container(
                 decoration: BoxDecoration(
                     //color: Colors.black.withOpacity(1.0),
                     image: DecorationImage(
@@ -480,10 +515,9 @@ class ServicesCard extends StatelessWidget {
                     )),
                 width: 300,
                 height: 120,
-              ),
-              SizedBox(height: 10),
+              ), */
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Text(heading!,
                     style: Theme.of(context)
                         .textTheme
@@ -491,14 +525,10 @@ class ServicesCard extends StatelessWidget {
                         .copyWith(color: kOrange),
                     textAlign: TextAlign.center),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  body!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(),
-                ),
+              Text(
+                body!,
+                textAlign: TextAlign.center,
+                style: TextStyle(),
               ),
             ],
           ),

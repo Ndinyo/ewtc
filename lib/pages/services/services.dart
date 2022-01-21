@@ -1,7 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ewtc/animations/entranceFader.dart';
 import 'package:ewtc/constants/constants.dart';
 import 'package:ewtc/custom_widgets/custom_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,43 +16,89 @@ class Services extends StatefulWidget {
 }
 
 class _ServicesState extends State<Services> with TickerProviderStateMixin {
+  final List<Widget> servicesCard1 = [
+    ServicesCard(
+      asset: 'images/writing.jpg',
+      heading: 'Professional Writing',
+      body: writing,
+      //faIcon: FaIcon(FontAwesomeIcons.pen),
+    ),
+    ServicesCard(
+      asset: 'images/training.jpg',
+      heading: 'Professional Training',
+      body: training,
+      //faIcon: FaIcon(
+      //FontAwesomeIcons.chalkboardTeacher),
+    ),
+    ServicesCard(
+      asset: 'images/mentoring.jpg',
+      heading: 'Mentorship',
+      body: mentorship,
+      //faIcon: FaIcon(FontAwesomeIcons.users),
+    ),
+  ];
+
+  final List<Widget> servicesCard2 = [
+    ServicesCard(
+      asset: 'images/research.jpg',
+      heading: 'Research',
+      body: research,
+      //faIcon:
+      //FaIcon(FontAwesomeIcons.researchgate),
+    ),
+    ServicesCard(
+      asset: 'images/consult.jpg',
+      heading: 'Consultancy',
+      body: consultancy,
+      //faIcon: FaIcon(FontAwesomeIcons.infoCircle),
+    ),
+    ServicesCard(
+      asset: 'images/account.jpg',
+      heading: 'Accounts Management',
+      body: aManagement,
+      //faIcon:
+      //FaIcon(FontAwesomeIcons.addressBook),
+    ),
+  ];
+
   double _opacity = 0;
   double _scrollPosition = 0;
   bool _showBackTopFab = false;
-  ScrollController? _scrollController;
+  final _scrollController = ScrollController();
+  bool useSystemCursor = false;
 
   _scrollListener() {
     setState(() {
-      _scrollPosition = _scrollController!.position.pixels;
+      _scrollPosition = _scrollController.position.pixels;
     });
   }
 
   @override
   void initState() {
-    _scrollController = ScrollController()
+    _scrollController
       ..addListener(() {
         setState(() {
-          if (_scrollController!.offset >= 400) {
+          if (_scrollController.offset >= 400) {
             _showBackTopFab = true;
           } else {
             _showBackTopFab = false;
           }
         });
       });
-    _scrollController!.addListener(_scrollListener);
+    _scrollController.addListener(_scrollListener);
     super.initState();
   }
 
   @override
   void dispose() {
-    _scrollController!.dispose(); // dispose the controller
+    _scrollController.dispose(); // dispose the controller
     super.dispose();
   }
 
   //Move to top callback
   void _scrollTop() async {
-    await _scrollController!
-        .animateTo(0, duration: Duration(seconds: 3), curve: Curves.linear);
+    await _scrollController.animateTo(0,
+        duration: Duration(seconds: 3), curve: Curves.linear);
   }
 
   @override
@@ -83,12 +129,12 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
             children: [
               ResponsiveHandler.isMobileScreen(context)
                   ? Container(
-                      child: ClipPath(
-                        clipper: WaveClipperTwo(),
-                        child: Column(
-                          children: [
-                            TopContainer(
-                              height: 250,
+                      child: Column(
+                        children: [
+                          ClipPath(
+                            clipper: WaveClipperTwo(),
+                            child: TopContainer(
+                              height: 300,
                               width: screenSize.width,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,7 +151,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                                           .copyWith(color: Colors.white),
                                     ),
                                   ),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 10),
                                   EntranceFader(
                                     offset: Offset(0, 0),
                                     delay: Duration(seconds: 2),
@@ -126,12 +172,12 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 10),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 10),
+                        ],
                       ),
                     )
-                  : TopContainer(
+                  : TopContainer2(
                       height: 400,
                       width: screenSize.width,
                       child: Column(
@@ -147,7 +193,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               style: Theme.of(context)
                                   .textTheme
                                   .headline5!
-                                  .copyWith(color: Colors.white),
+                                  .copyWith(color: kOrange),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -160,7 +206,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               style: Theme.of(context)
                                   .textTheme
                                   .headline6!
-                                  .copyWith(color: Colors.white),
+                                  .copyWith(color: kOrange),
                             ),
                           ),
                           Divider(
@@ -207,58 +253,66 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                             delay: Duration(seconds: 4),
                             duration: Duration(milliseconds: 800),
                             child: Container(
-                              child: Column(
-                                children: [
-                                  ServicesCard(
-                                    asset: 'images/writing.jpg',
-                                    heading: 'Professional Writing',
-                                    body: writing,
-                                    //faIcon: FaIcon(FontAwesomeIcons.pen),
-                                  ),
-                                  SizedBox(height: 10),
-                                  ServicesCard(
-                                    asset: 'images/training.jpg',
-                                    heading: 'Professional Training',
-                                    body: training,
-                                    //faIcon: FaIcon(
-                                    //FontAwesomeIcons.chalkboardTeacher),
-                                  ),
-                                  SizedBox(height: 10),
-                                  ServicesCard(
-                                    asset: 'images/mentoring.jpg',
-                                    heading: 'Mentorship',
-                                    body: mentorship,
-                                    //faIcon: FaIcon(FontAwesomeIcons.users),
-                                  ),
-                                  SizedBox(height: 10),
-                                  ServicesCard(
-                                    asset: 'images/research.jpg',
-                                    heading: 'Research',
-                                    body: research,
-                                    //faIcon:
-                                    //FaIcon(FontAwesomeIcons.researchgate),
-                                  ),
-                                  SizedBox(height: 10),
-                                  ServicesCard(
-                                    asset: 'images/consult.jpg',
-                                    heading: 'Consultancy',
-                                    body: consultancy,
-                                    //faIcon: FaIcon(FontAwesomeIcons.infoCircle),
-                                  ),
-                                  SizedBox(height: 10),
-                                  ServicesCard(
-                                    asset: 'images/account.jpg',
-                                    heading: 'Accounts Management',
-                                    body: aManagement,
-                                    //faIcon:
-                                    //FaIcon(FontAwesomeIcons.addressBook),
-                                  ),
-                                ],
+                                child: Text(
+                              weEmploy,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(),
+                            )),
+                          ),
+                          SizedBox(height: 10),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 4),
+                            duration: Duration(milliseconds: 800),
+                            child: SizedBox(
+                              height: 400,
+                              child: CarouselSlider(
+                                items: servicesCard1
+                                    .map((cards) => SizedBox(
+                                          height: 400,
+                                          child: Center(
+                                            child: Row(
+                                              children: [cards],
+                                            ),
+                                          ),
+                                        ))
+                                    .toList(),
+                                options: CarouselOptions(
+                                  reverse: true,
+                                  autoPlay: true,
+                                ),
                               ),
                             ),
                           ),
-                          Divider(),
-                          SizedBox(height: 10),
+                          SizedBox(height: 20),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 4),
+                            duration: Duration(milliseconds: 800),
+                            child: SizedBox(
+                              height: 400,
+                              child: CarouselSlider(
+                                items: servicesCard2
+                                    .map((cards) => SizedBox(
+                                          height: 400,
+                                          child: Center(
+                                            child: Row(
+                                              children: [cards],
+                                            ),
+                                          ),
+                                        ))
+                                    .toList(),
+                                options: CarouselOptions(
+                                  reverse: true,
+                                  autoPlay: true,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
                           EntranceFader(
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 5),
@@ -292,17 +346,17 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                                   footer: Center(child: Text('Training')),
                                 ),
                                 /* CircularPercentIndicator(
-                                  animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 10.0,
-                                  animation: true,
-                                  percent: 0.92,
-                                  center: Text('92.0%'),
-                                  circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: kBlue,
-                                  backgroundColor: Colors.yellow,
-                                  footer: Center(child: Text('Consultancy')),
-                                ), */
+                                    animationDuration: 2500,
+                                    radius: 120.0,
+                                    lineWidth: 10.0,
+                                    animation: true,
+                                    percent: 0.92,
+                                    center: Text('92.0%'),
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    progressColor: kBlue,
+                                    backgroundColor: Colors.yellow,
+                                    footer: Center(child: Text('Consultancy')),
+                                  ), */
                                 CircularPercentIndicator(
                                   animationDuration: 4500,
                                   radius: 90.0,
@@ -318,9 +372,7 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Divider(),
-                          SizedBox(height: 10),
+                          SizedBox(height: 20),
                           EntranceFader(
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 6),
@@ -341,19 +393,18 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               delay: Duration(seconds: 6),
                               duration: Duration(milliseconds: 800),
                               child: Container(
-                                //height: 500.0,
-                                width: screenSize.width,
-                                child: Image.asset(
-                                  'images/poster.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                                /* decoration: BoxDecoration(
-                                  //color: Colors.black.withOpacity(0.8),
+                                height: 400.0,
+                                width: screenSize.width - 100,
+                                /*  child: Image.asset(
+                                    'images/poster.jpg',
+                                    fit: BoxFit.fill,
+                                  ), */
+                                decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage('images/poster.jpg'),
                                     fit: BoxFit.fill,
                                   ),
-                                ), */
+                                ),
                               ),
                             ),
                           ),
@@ -388,6 +439,21 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                                 ],
                               ),
                             ),
+                          ),
+                          SizedBox(height: 20),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 4),
+                            duration: Duration(milliseconds: 800),
+                            child: Container(
+                                child: Text(
+                              weEmploy,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(),
+                            )),
                           ),
                           SizedBox(height: 20),
                           EntranceFader(
@@ -457,8 +523,6 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                             ),
                           ),
                           SizedBox(height: 20),
-                          Divider(),
-                          SizedBox(height: 10),
                           EntranceFader(
                             offset: Offset(0, 0),
                             delay: Duration(seconds: 6),
@@ -492,17 +556,17 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                                   footer: Center(child: Text('Training')),
                                 ),
                                 /* CircularPercentIndicator(
-                                  animationDuration: 2500,
-                                  radius: 120.0,
-                                  lineWidth: 10.0,
-                                  animation: true,
-                                  percent: 0.92,
-                                  center: Text('92.0%'),
-                                  circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: kBlue,
-                                  backgroundColor: Colors.yellow,
-                                  footer: Center(child: Text('Consultancy')),
-                                ), */
+                                    animationDuration: 2500,
+                                    radius: 120.0,
+                                    lineWidth: 10.0,
+                                    animation: true,
+                                    percent: 0.92,
+                                    center: Text('92.0%'),
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    progressColor: kBlue,
+                                    backgroundColor: Colors.yellow,
+                                    footer: Center(child: Text('Consultancy')),
+                                  ), */
                                 CircularPercentIndicator(
                                   animationDuration: 4500,
                                   radius: 120.0,
@@ -518,8 +582,6 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Divider(),
                           SizedBox(height: 20),
                           EntranceFader(
                             offset: Offset(0, 0),
@@ -539,40 +601,42 @@ class _ServicesState extends State<Services> with TickerProviderStateMixin {
                             delay: Duration(seconds: 6),
                             duration: Duration(milliseconds: 800),
                             child: Container(
-                              height: 500.0,
+                              height: 400.0,
                               width: (screenSize.width / 2) - 100,
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.8),
+                                //color: Colors.black.withOpacity(0.8),
                                 image: DecorationImage(
                                   image: AssetImage('images/poster.jpg'),
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               /* child: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Customer satisfaction is of utmost importance. Our services are tailored with the customer needs in mind. Join our team of professionals and let us take care of your needs!',
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6!
-                                          .copyWith(color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ), */
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Customer satisfaction is of utmost importance. Our services are tailored with the customer needs in mind. Join our team of professionals and let us take care of your needs!',
+                                        textAlign: TextAlign.center,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6!
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ), */
                             ),
                           ),
                         ],
                       ),
                     ),
+              SizedBox(height: 10),
             ],
           ),
         ),
       ),
+      //Bottom copyright section
       floatingActionButton: _showBackTopFab == false
           ? null
           : FloatingActionButton(

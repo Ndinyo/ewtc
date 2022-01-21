@@ -2,7 +2,6 @@ import 'package:ewtc/animations/entranceFader.dart';
 import 'package:ewtc/constants/constants.dart';
 import 'package:ewtc/custom_widgets/custom_widgets.dart';
 import 'package:ewtc/service/service.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -24,14 +23,15 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
   final message = TextEditingController();
   final service = Service();
   bool _showBackTopFab = false;
-  ScrollController? _scrollController;
+  final _scrollController = ScrollController();
+  bool useSystemCursor = false;
 
   @override
   void initState() {
-    _scrollController = ScrollController()
+    _scrollController
       ..addListener(() {
         setState(() {
-          if (_scrollController!.offset >= 400) {
+          if (_scrollController.offset >= 400) {
             _showBackTopFab = true;
           } else {
             _showBackTopFab = false;
@@ -43,14 +43,14 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    _scrollController!.dispose(); // dispose the controller
+    _scrollController.dispose(); // dispose the controller
     super.dispose();
   }
 
   //Move to top callback
   void _scrollTop() async {
-    await _scrollController!
-        .animateTo(0, duration: Duration(seconds: 3), curve: Curves.linear);
+    await _scrollController.animateTo(0,
+        duration: Duration(seconds: 3), curve: Curves.linear);
   }
 
   @override
@@ -80,12 +80,12 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                       child: Column(
                         children: [
                           ClipPath(
-                            clipper: WaveClipperOne(),
+                            clipper: WaveClipperTwo(),
                             child: TopContainer(
-                              height: 250,
+                              height: 300,
                               width: screenSize.width,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   EntranceFader(
                                     offset: Offset(0, 0),
@@ -114,11 +114,16 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                           .copyWith(color: Colors.white),
                                     ),
                                   ),
-                                  Divider(),
+                                  Divider(
+                                    indent: 2.0,
+                                    endIndent: screenSize.width / 2,
+                                    color: Colors.white,
+                                  ),
                                 ],
                               ),
                             ),
                           ),
+                          SizedBox(height: 10),
                           Container(
                             width: screenSize.width,
                             height: 500,
@@ -162,44 +167,36 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                         ],
                       ),
                     )
-                  : TopContainer(
-                      height: 750,
+                  : TopContainer2(
+                      height: 770,
                       width: screenSize.width,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(height: 50),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 1),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Contact Us',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                EntranceFader(
-                                  offset: Offset(0, 0),
-                                  delay: Duration(seconds: 2),
-                                  duration: Duration(milliseconds: 800),
-                                  child: Text(
-                                    'Get in touch',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                ),
-                              ],
+                          SizedBox(height: 80),
+                          /* EntranceFader(
+                              offset: Offset(0, 0),
+                              delay: Duration(seconds: 1),
+                              duration: Duration(milliseconds: 800),
+                              child: Text(
+                                'Contact Us',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: kOrange),
+                              ),
+                            ), */
+                          //SizedBox(height: 10),
+                          EntranceFader(
+                            offset: Offset(0, 0),
+                            delay: Duration(seconds: 2),
+                            duration: Duration(milliseconds: 800),
+                            child: Text(
+                              'Get in touch',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: kOrange),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -251,9 +248,8 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
-                              Divider(),
                               Text(
-                                'SAY HELLO',
+                                'Say Hello',
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
@@ -364,7 +360,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                               style: ButtonStyle(
                                                 backgroundColor:
                                                     MaterialStateProperty.all(
-                                                        Colors.orangeAccent),
+                                                        kOrange),
                                               ),
                                               onPressed: () {},
                                               child: Text('Send',
@@ -447,7 +443,6 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  //color: kBlue,
                                   borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(30.0),
                                 bottomLeft: Radius.circular(30.0),
@@ -533,7 +528,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 MaterialStateProperty.all(
-                                                    Colors.orangeAccent),
+                                                    kOrange),
                                           ),
                                           onPressed: () {},
                                           child: Text('Send',
@@ -553,7 +548,7 @@ class _ContactState extends State<Contact> with TickerProviderStateMixin {
                               child: Column(
                                 children: [
                                   Text(
-                                    'SAY HELLO',
+                                    'Say Hello',
                                     textAlign: TextAlign.center,
                                     style: Theme.of(context)
                                         .textTheme
